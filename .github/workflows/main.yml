@@ -50,5 +50,5 @@ jobs:
         run: pytest integration/test_app.py
         
       - name: test unittest
-        run: pytest unittest/test_function.py
+        run: pytest unittest/test_functions.py
         
