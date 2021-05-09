@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 # 실행되는 CI 이름
-name: build and test
+name: build-and-test
 
 # Controls when the action will run.
 # 현재 CI가 어떤 조건에서 실행이 될 것인지
@@ -21,7 +21,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   # 하나의 job에 해당하는 job 이름
-  build and test:
+  build-and-test:
     # The type of runner that the job will run on
     # 어떤 OS에서 테스트를 할 것 인지
     runs-on: ubuntu-latest
