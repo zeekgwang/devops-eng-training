@@ -39,9 +39,12 @@ jobs:
       # actions/checkout@v2는 repo의 코드를 CI서버(?)에 check out을 해서 job을 돌리겠다는 의미(version 2로)
       - uses: actions/checkout@v2
 
+      - name: install dependencies
+        run: pip install -r requirements.txt
+
       - name: Run app.py
       # hello.py 실행
-        run: python app.py
+        run: python3 app.py
         
       - name: test integration
         run: pytest integration/test_app.py
