@@ -1,0 +1,51 @@
+# This is a basic workflow to help you get started with Actions
+# 실행되는 CI 이름
+name: build and test
+
+# Controls when the action will run.
+# 현재 CI가 어떤 조건에서 실행이 될 것인지
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  # main branch에 push, pull_request 되는 경우에 실행을 하겠다
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  # 조건이 만족하지 않더라고, 매뉴얼로 CI를 실행시킬수 있는 옵션
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# 어떤 일을 행할 것인지 하나의 CI에는 여러개의 job이 있을 수 있고 순차적 or 병렬로 진행할 수 있다
+jobs:
+  # This workflow contains a single job called "build"
+  # 하나의 job에 해당하는 job 이름
+  build and test:
+    # The type of runner that the job will run on
+    # 어떤 OS에서 테스트를 할 것 인지
+    runs-on: ubuntu-latest
+    
+    # 어떤 파이썬 버전에서 테스트 할 지
+    strategy:
+      matrix:
+        python-version: [3.8 3.9]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    # job에서 행하는 실제 액션을 step 이라 한다
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # github에서 제공하는 액션의 종류
+      # actions/checkout@v2는 repo의 코드를 CI서버(?)에 check out을 해서 job을 돌리겠다는 의미(version 2로)
+      - uses: actions/checkout@v2
+
+      - name: Run app.py
+      # hello.py 실행
+        run: python app.py
+        
+      - name: test integration
+        run: pytest integration/test_app.py
+        
+      - name: test unittest
+        run: pytest unittest/test_function.py
+        
