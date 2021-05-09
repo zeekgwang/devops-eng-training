@@ -1,4 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from functions import add_func, subtract_func, multiply_func, division_func
+
 app = Flask(__name__)
 
 
@@ -13,6 +15,84 @@ def healthCheck():
 
 
 # TODO(everyone): GET 메소드로 더하기, 빼기, 곱하기, 나누기 함수 라우트 완성하기
+@app.route("/add", methods=["GET"])
+def add():
+    x = request.args.get('x')
+    y = request.args.get('y')
+    if x.isdigit() and y.isdigit():
+        result = str(add_func(x, y))
+        response = app.response_class(
+            response=result,
+            status=200
+        )
+    else:
+        response = app.response_class(
+            response="Bad Request",
+            status=400
+        )
+
+    return response
+
+
+@app.route("/subtract", methods=["GET"])
+def subtract():
+    x = request.args.get('x')
+    y = request.args.get('y')
+    if x.isdigit() and y.isdigit():
+        result = str(subtract_func(x, y))
+        response = app.response_class(
+            response=result,
+            status=200
+        )
+    else:
+        response = app.response_class(
+            response="Bad Request",
+            status=400
+        )
+
+    return response
+
+
+@app.route("/multiply", methods=["GET"])
+def multiply():
+    x = request.args.get('x')
+    y = request.args.get('y')
+    if x.isdigit() and y.isdigit():
+        result = str(multiply_func(x, y))
+        response = app.response_class(
+            response=result,
+            status=200
+        )
+    else:
+        response = app.response_class(
+            response="Bad Request",
+            status=400
+        )
+
+    return response
+
+
+@app.route("/division", methods=["GET"])
+def division():
+    x = request.args.get('x')
+    y = request.args.get('y')
+    if x.isdigit() and y.isdigit() and int(y) != 0:
+        result = str(division_func(x, y))
+        response = app.response_class(
+            response=result,
+            status=200
+        )
+    else:
+        response = app.response_class(
+            response="Bad Request",
+            status=400
+        )
+
+    return response
+
+
+def create_app():
+    return app
 
 
 if __name__ == '__main__':
