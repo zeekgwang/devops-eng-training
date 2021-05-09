@@ -44,7 +44,7 @@ jobs:
 
       - name: Run app.py
       # hello.py 실행
-        run: python3 app.py
+        run: python3 app.py &
         
       - name: test integration
         run: pytest integration/test_app.py
