@@ -19,3 +19,7 @@ def multiply_func(x: int, y: int) -> int:
 
 def division_func(x: float, y: float) -> float:
     return x / y
+
+
+def sqrt_func(x: int) -> float:
+    return math.sqrt(x)
