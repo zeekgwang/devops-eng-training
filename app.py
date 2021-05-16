@@ -20,7 +20,7 @@ def add():
     x = request.args.get('x')
     y = request.args.get('y')
     if x.isdigit() and y.isdigit():
-        result = str(add_func(x, y))
+        result = str(add_func(int(x), int(y)))
         response = app.response_class(
             response=result,
             status=200
@@ -39,7 +39,7 @@ def subtract():
     x = request.args.get('x')
     y = request.args.get('y')
     if x.isdigit() and y.isdigit():
-        result = str(subtract_func(x, y))
+        result = str(subtract_func(int(x), int(y)))
         response = app.response_class(
             response=result,
             status=200
@@ -58,7 +58,7 @@ def multiply():
     x = request.args.get('x')
     y = request.args.get('y')
     if x.isdigit() and y.isdigit():
-        result = str(multiply_func(x, y))
+        result = str(multiply_func(int(x), int(y)))
         response = app.response_class(
             response=result,
             status=200
@@ -77,7 +77,7 @@ def division():
     x = request.args.get('x')
     y = request.args.get('y')
     if x.isdigit() and y.isdigit() and int(y) != 0:
-        result = str(division_func(x, y))
+        result = str(division_func(int(x), int(y)))
         response = app.response_class(
             response=result,
             status=200
