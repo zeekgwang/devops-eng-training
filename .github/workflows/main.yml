@@ -44,11 +44,11 @@ jobs:
 
       - name: Run app.py
       # hello.py 실행
-        run: python3 app.py
+        run: python3 app.py &
         
       - name: test integration
         run: pytest integration/test_app.py
         
       - name: test unittest
-        run: pytest unittest/test_function.py
+        run: pytest unittest/test_functions.py
         
