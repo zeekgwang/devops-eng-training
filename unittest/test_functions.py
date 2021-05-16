@@ -4,7 +4,7 @@
 # AttributeError: module 'unittest' has no attribute 'SkipTest'
 
 import pytest
-from functions import add_func, subtract_func, multiply_func, division_func
+from functions import add_func, subtract_func, multiply_func, division_func, sqrt_func
 
 
 def test_add_func():
@@ -48,3 +48,13 @@ def test_division_func():
         division_func('a', -1)
     with pytest.raises(TypeError):
         division_func(1)
+
+
+def test_sqrt_func():
+    assert sqrt_func(16) == 4
+    assert sqrt_func(0) == 0
+    assert sqrt_func(1) == 1
+    with pytest.raises(TypeError):
+        sqrt_func('a')
+    with pytest.raises(TypeError):
+        sqrt_func(1, 2)
