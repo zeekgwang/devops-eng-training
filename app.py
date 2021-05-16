@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from functions import add_func, subtract_func, multiply_func, division_func
+from functions import add_func, subtract_func, multiply_func, division_func, sqrt_func
 
 app = Flask(__name__)
 
@@ -78,6 +78,24 @@ def division():
     y = request.args.get('y')
     if x.isdigit() and y.isdigit() and int(y) != 0:
         result = str(division_func(int(x), int(y)))
+        response = app.response_class(
+            response=result,
+            status=200
+        )
+    else:
+        response = app.response_class(
+            response="Bad Request",
+            status=400
+        )
+
+    return response
+
+
+@app.route("/sqrt", methods=["GET"])
+def sqrt():
+    x = request.args.get('x')
+    if x.isdigit():
+        result = str(sqrt_func(int(x)))
         response = app.response_class(
             response=result,
             status=200
