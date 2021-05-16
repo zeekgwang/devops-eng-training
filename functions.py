@@ -12,6 +12,8 @@ def subtract_func(x: int, y: int) -> int:
 
 
 def multiply_func(x: int, y: int) -> int:
+    if type(x) != int or type(y) != int:
+        raise TypeError
     return x * y
 
 
