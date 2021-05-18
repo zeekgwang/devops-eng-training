@@ -1,3 +1,5 @@
+[![build-and-test](https://github.com/zeekgwang/devops-eng-training/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/zeekgwang/devops-eng-training/actions/workflows/main.yml)
+
 # devops-eng-training
 ## devops-eng-training
 ### DevOps 연습 repo
